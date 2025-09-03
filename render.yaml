@@ -1,5 +1,0 @@
-services:
-  - type: static
-    name: image-resizer-static
-    env: static
-    staticPublishPath: public
