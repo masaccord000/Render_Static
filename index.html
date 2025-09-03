@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>stlite test</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.58.3/build/stlite.css" />
-    </head>
-  <body>
-    <div id="root"></div>
-    <script src="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.58.3/build/stlite.js"></script>
-    <script>
-      const pythonCode = `
+    <title>変電アプリ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#3367D6" />
+    <script type="module">
+      import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.76.0/build/stlite.js";
+
+      mount(`
 import streamlit as st
-st.title("✅ stlite 起動成功！")
-st.write("このページは stlite によって完全ローカルで動作しています。")
-      `;
-      stlite.mount({ code: pythonCode }, document.getElementById("main"));
+
+st.set_page_config(page_title="変電アプリ", page_icon="⚡")
+st.title("⚡ 変電アプリ")
+st.write("このアプリは stlite によって完全ローカルで動作しています。")
+st.success("stlite の最小構成が正常に動作しています！")
+      `, document.body);
     </script>
+  </head>
+  <body>
   </body>
 </html>
