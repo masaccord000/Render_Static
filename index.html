@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>画像縮小アプリ</title>
+    <script src="https://cdn.jsdelivr.net/npm/stlite@latest/dist/stlite.js"></script>
+  </head>
+  <body>
+    <div id="main"></div>
+    <script>
+      stlite.mount(
+        {
+          entrypoint: "streamlit_app.py",
+        },
+        document.getElementById("main")
+      );
+    </script>
+  </body>
+</html>
