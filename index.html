@@ -2,22 +2,31 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>変電アプリ</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#3367D6" />
+    <title>画像処理アプリ</title>
     <script type="module">
       import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.76.0/build/stlite.js";
 
       mount(`
 import streamlit as st
+import cv2
+import numpy as np
+from PIL import Image
 
-st.set_page_config(page_title="変電アプリ", page_icon="⚡")
-st.title("⚡ 変電アプリ")
-st.write("このアプリは stlite によって完全ローカルで動作しています。")
-st.success("stlite の最小構成が正常に動作しています！")
+st.set_page_config(page_title="画像処理アプリ", page_icon="🖼️")
+st.title("🖼️ 画像処理アプリ（stlite）")
+
+uploaded_file = st.file_uploader("画像をアップロードしてください", type=["png", "jpg", "jpeg"])
+
+if uploaded_file is not None:
+    image = Image.open(uploaded_file)
+    st.image(image, caption="元画像", use_column_width=True)
+
+    img_array = np.array(image.convert("RGB"))
+    gray = cv2.cvtColor(img_array, cv2.COLOR_RGB2GRAY)
+
+    st.image(gray, caption="グレースケール画像", use_column_width=True)
       `, document.body);
     </script>
   </head>
-  <body>
-  </body>
+  <body></body>
 </html>
